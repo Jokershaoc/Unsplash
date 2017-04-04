@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>个人详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+    <meta name="author" content="FREEHTML5.CO" />
+
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Google Webfonts -->
+    <!--<link href='http://fonts.useso.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>-->
+    <!--<link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Salvattore -->
+    <link rel="stylesheet" href="css/salvattore.css">
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div id="fh5co-offcanvass">
+    <a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">菜单 <i class="icon-cross"></i> </a>
+    <h1 class="fh5co-logo"><a class="navbar-brand" href="info.html">个人详情</a></h1>
+    <ul>
+        <li class="active"><a href="index.html">首页</a></li>
+        <li><a href="login.html">登录</a></li>
+        <li><a href="register.html">注册</a></li>
+        <li><a href="perfect.html">完善信息</a></li>
+        <li><a href="upload.html">上传图片</a></li>
+    </ul>
+</div>
+<header id="fh5co-header" role="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 base-info" style="position: relative;">
+                <a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">菜单 <i class="icon-menu"></i></a>
+                <a class="navbar-brand" href="index.html">首页</a>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- END .header -->
+
+
+<div id="fh5co-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8  col-md-offset-2">
+                <h2 style="margin-left:90px;">个人详情</h2>
+                <div class="fh5co-spacer fh5co-spacer-sm"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group image-upload">
+                            </div>
+                        </div>
+                    </div>
+                <p style="font-size:20px;color:#000;font-weight: bold;">我的收藏：</p>
+                <div class="row love-img" style="margin-bottom:50px;">
+
+                </div>
+                <p style="font-size:20px;color:#000;font-weight: bold;">我的上传：</p>
+                <div class="row upload-img" style="margin-bottom:100px;">
+
+                </div>
+                </div>
+            </div>
+    </div>
+</div>
+<iframe id="newWindow" style="display: none;" name="newWindow"></iframe>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" style="margin-bottom:0;">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="js/jquery.waypoints.min.js"></script>
+<!-- Magnific Popup -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- Salvattore -->
+<script src="js/salvattore.min.js"></script>
+<!-- Main JS -->
+<script src="js/main.js"></script>
+
+<script type="text/javascript">
+    var userId =  window.sessionStorage.getItem("userId");
+
+    $.ajax({
+        url:"/user/info?id="+userId,
+        dataType:"json",
+        type:"GET",
+        success:function(data){
+            var str = '<p class="user-detail" style="position: absolute;right:380px;top:14px;">' +
+                    '<img style="margin-top:-7px;border: solid 1px #aaa;width:40px;height:40px;margin-right:15px;border-radius:100%;" src="'+data.body.img+'" />' +
+                    '<span style="font-size: 16px;color:#000;">'+data.body.username+'</span></p>';
+            $(".base-info").append(str);
+            $(".user-detail").click(function(){
+                location.href = "info.html";
+            });
+        }
+    });
+
+    $.ajax({
+        url:"/user/info?id="+userId,
+        dataType:"json",
+        type:"GET",
+        success:function(data){
+           if(data.status == 0){
+               var str = "<p><img style='width:260px;' src='"+data.body.img+"' /></p>" +
+                       "<p><span>用户名：</span><span>"+data.body.username+"</span></p>"+
+                       "<p><span>年龄：</span><span>"+data.body.age+"</span></p>" +
+                       "<p><span>性别：</span><span>";
+               if(data.body.sex == 0){
+                   str += "男";
+               }else{
+                   str += "女";
+               }
+                str += "</span></p>"+
+                        "<p><span>爱好：</span><span>"+data.body.hobby+"</span></p>"+
+                        "<p><span>简介：</span><span>"+data.body.indroduction+"</span></p>" +
+                        "";
+                $(".image-upload").append(str);
+           }
+        }
+    });
+    $.ajax({
+        url:"/user/loveImg?userId="+userId,
+        dataType:"json",
+        type:"GET",
+        success:function(data){
+            $(".love-img").empty();
+            var str = "";
+            data.body.reverse();
+            for(var i = 0; i < data.body.length;i++){
+                str += "<div class='col-md-3'>" +
+                        "<a style='display: inline-block' href='detail.html?id="+data.body[i]._id+"'>" +
+                        "<img style='width:200px;height:200px;' src='"+data.body[i].img+"' />" +
+                        "</a></div>";
+            }
+            console.log(str);
+            $(".love-img").append(str);
+        }
+    });
+    // 获取我的上传图片
+    $.ajax({
+        url:"/user/upload?userId="+userId,
+        dataType:"json",
+        type:"GET",
+        success:function(data){
+            $(".upload-img").empty();
+            var str = "";
+            data.body.reverse();
+            for(var i = 0; i < data.body.length;i++){
+                str += "<div class='col-md-3'>" +
+                        "<a style='display: inline-block' href='detail.html?id="+data.body[i]._id+"'>" +
+                        "<img style='width:200px;height:200px;' src='"+data.body[i].img+"' />" +
+                        "</a></div>";
+            }
+            console.log(str);
+            $(".upload-img").append(str);
+        }
+    });
+
+</script>
+
+
+
+</body>
+</html>
